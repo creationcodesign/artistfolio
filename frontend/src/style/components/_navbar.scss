@@ -1,0 +1,26 @@
+nav {
+    display: flex;
+    gap: 3.5rem;
+
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: var(--primary);
+        transition: 0.5s all ease;
+
+        &:hover {
+            color: var(--accent);
+        }
+    }
+
+    a.active {
+        color: var(--secondary);
+        text-decoration: wavy underline var(--secondary);
+        text-underline-offset: 0.2rem;
+
+        &:hover {
+            color: var(--accent);
+            text-underline-offset: 0.5rem;
+        }
+    }
+}

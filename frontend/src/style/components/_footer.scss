@@ -1,0 +1,15 @@
+footer {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    // place-items: center;
+    gap: 1rem;
+    color: var(--black);
+}
+
+
+// @media screen and (max-width: 600px) {
+// footer {
+//     height: auto;
+// }
+// }

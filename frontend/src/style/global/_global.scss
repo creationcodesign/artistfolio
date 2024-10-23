@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;500;600;700&display=swap');
+
+
+// @font-face {
+//     font-family: 'YesevaOne-Regular';
+//     src: local('YesevaOne-Regular'), url(../../../public/assets/font/YesevaOne-Regular.ttf) format('ttf'),
+//         url(../../../public/assets/font/rossanova/Rossanova-Regular.otf) format("oft"),
+//         url(../../../public/assets/font/Yeseva_One/YesevaOne-Regular.ttf) format("ttf"),
+//         url(../../../public/assets/font/ABeeZee/ABeeZee-Regular.ttf) format("ttf"),
+//         url(../../../public/assets/font/Exo_2/Exo2-VariableFont_wght.ttf) format("ttf")
+// }
+
+:root {
+    --max-width: 1100px;
+    --border-radius: 12px;
+    --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
+        'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
+        'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+    font-family: "ABeeZee", sans-serif;
+
+    // COLORS
+    --primary: #e25cfa;
+    --secondary: #9A44EA;
+    --accent: #44B3EA;
+    --accent-light: #8ad8ff;
+    --white: #c7dee2;
+    --black: #343434;
+    --gray: #797979;
+    --gray-light: #cbcbcb;
+    --gray-super-light: #e3e3e3;
+    --gray-dark: #303030;
+    --blue: #0E5A73;
+    --blue-light: #17A2BA;
+    --blue-super-light: #98CDD6;
+    --blue-dark: #093A4F;
+    --green: #3EA45F;
+    --red: #f27349;
+    --orange: #f9b63a;
+
+    --bg-light-color: #e2eeff;
+    --bg-dark-color: #20252d;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light-color);
+    color: var(--black);
+    overflow-y: hidden;
+}
+
+.app {
+    width: 1280px;
+    min-height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    // border: 2px solid rgb(8, 193, 30);
+}
+
+main {
+    flex: 1;
+    min-height: 20vh;
+    // border: 2px solid rgb(253, 85, 163);
+}
+
+::selection {
+    background: var(--accent-light);
+}

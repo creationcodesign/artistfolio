@@ -1,0 +1,160 @@
+button,
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    background: none;
+    border-radius: 18px;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    background: linear-gradient(317deg, rgb(247, 176, 44) 0%, rgba(219, 127, 40, 1) 100%);
+    color: var(--black);
+    border-radius: 18px;
+    position: relative;
+    transition: all 0.5s ease;
+    z-index: 1;
+}
+
+.btn-primary:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    background-color: var(--white);
+    border-radius: 18px;
+    transition: all 0.5s ease;
+}
+
+.btn-primary:hover {
+    color: var(--accent);
+    background-color: var(--white);
+}
+
+.btn-primary:hover:after {
+    left: 0;
+    width: 100%;
+}
+
+.btn-primary:active {
+    top: 2px;
+}
+
+
+.btn-secondary {
+    width: fit-content;
+    background: none;
+    color: var(--blue-light-2) !important;
+    position: relative;
+    transition: all 0.5s ease;
+    border-radius: 18px;
+    z-index: 1;
+    border: 2px solid var(--blue-light-2);
+}
+
+.btn-secondary:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    background-color: var(--blue-light-2);
+    border-radius: 18px;
+    transition: all 0.5s ease;
+}
+
+.btn-secondary:hover {
+    color: var(--white) !important;
+}
+
+.btn-secondary:hover:after {
+    left: 0;
+    width: 100%;
+}
+
+.btn-secondary:active {
+    top: 2px;
+}
+
+
+.btn-back {
+    color: var(--accent);
+    cursor: pointer;
+    z-index: 100;
+}
+
+.btn-link {
+    width: fit-content;
+    margin: 1rem 0;
+}
+
+.link-more {
+    align-self: center;
+    gap: 0.5rem;
+    font-weight: bold;
+
+    transition: 0.3s all ease;
+
+    &:visited,
+    &:active {
+        color: var(--accent);
+    }
+
+    &:hover {
+        color: var(--black);
+    }
+}
+
+.sublink-more {
+    margin-top: 0.3rem;
+    padding: 0 0.3rem;
+    align-items: center;
+    gap: 0.3rem;
+    color: #41a0c23b;
+    color: #1e5c723b;
+}
+
+
+.tag-link {
+    padding: 0.5rem 1.5rem;
+    background-color: var(--gray-super-light);
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--black);
+    transition: 0.9s ease;
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--accent);
+    }
+}
+
+.to-top {
+    width: 3rem;
+    height: 3rem;
+    margin-left: auto;
+    background-color: var(--gray-super-light);
+    opacity: 0.8;
+    border-radius: 50%;
+    cursor: pointer;
+    position: fixed;
+    right: 2rem;
+    bottom: 1rem;
+    z-index: 99;
+
+    .icon-to-top {
+        color: var(--accent);
+        opacity: 1;
+    }
+}

@@ -1,0 +1,18 @@
+.page-page {
+    width: 100%;
+}
+
+
+// RESPONSIVE DESIGN
+@media screen and (max-width: 800px) {
+    .home-page {
+        .hero-section {
+            height: auto;
+
+            img {
+                width: 60%;
+                height: 75%;
+            }
+        }
+    }
+}
