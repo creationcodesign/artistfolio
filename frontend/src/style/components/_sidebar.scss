@@ -1,0 +1,11 @@
+.sidebar {
+    .sidebar-item {
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        padding: 0.5rem 0;
+    }
+
+    .active {
+        border-bottom: 2px solid var(--accent);
+    }
+}
