@@ -1,8 +1,11 @@
 import { useState } from "react"
 import { useProjectStore } from "../../../store/project"
 import { Project } from "../../../interface/Project"
+import { useToast } from "../../../context/ToastContext";
+
 
 export default function CreateProject() {
+    const { addToast } = useToast();
 
     const [project, setProject] = useState<Project>({
         name: '',
@@ -17,18 +20,21 @@ export default function CreateProject() {
     const handleCreateProject = async () => {
         console.log(project)
         const { success, message } = await createProject(project)
-        console.log("success", success)
-        console.log("message", message)
+        const toastMessage = message || 'An unexpected error occurred';
 
         if (success) {
-            setProject({
-                name: '',
-                description: '',
-                technologies: [''],
-                thumbnail: '',
-                link: '',
-            })
+            addToast(toastMessage, 'success')
+        } else {
+            addToast(toastMessage, 'error')
         }
+
+        setProject({
+            name: '',
+            description: '',
+            technologies: [''],
+            thumbnail: '',
+            link: '',
+        })
     }
 
 
@@ -65,7 +71,7 @@ export default function CreateProject() {
                 </div>
             </form>
             <button onClick={handleCreateProject}>
-                create
+                save
             </button>
         </div>
     )
