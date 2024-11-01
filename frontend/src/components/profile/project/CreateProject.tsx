@@ -1,19 +1,36 @@
 import { useState } from "react"
-
+import { useProjectStore } from "../../../store/project"
+import { Project } from "../../../interface/Project"
 
 export default function CreateProject() {
-    const [project, setProject] = useState({
+
+    const [project, setProject] = useState<Project>({
         name: '',
         description: '',
-        technologies: '',
+        technologies: [''],
         thumbnail: '',
         link: '',
     })
 
+    const { createProject } = useProjectStore()
 
-    const handleCreateProject = async (e: any) => {
+    const handleCreateProject = async () => {
         console.log(project)
+        const { success, message } = await createProject(project)
+        console.log("success", success)
+        console.log("message", message)
+
+        if (success) {
+            setProject({
+                name: '',
+                description: '',
+                technologies: [''],
+                thumbnail: '',
+                link: '',
+            })
+        }
     }
+
 
     return (
         <div className="project-action-section create-project">
@@ -21,7 +38,7 @@ export default function CreateProject() {
                 Create Project
             </h3>
 
-            <form action="" className="form-project-create" onSubmit={(e) => e.preventDefault()}>
+            <form className="form-project-create" onSubmit={(e) => e.preventDefault()}>
                 <div className="form-group">
                     <label htmlFor="project-title">
                         <span>project name</span>
@@ -33,7 +50,7 @@ export default function CreateProject() {
                     </label>
                     <label htmlFor="project-technologies">
                         <span>project technologies</span>
-                        <input type="text" name="technologies" id="project-technologies" onChange={(e) => setProject({ ...project, technologies: e.target.value })} />
+                        <input type="text" name="technologies" id="project-technologies" onChange={(e) => setProject({ ...project, technologies: e.target.value.split(',') })} />
                     </label>
                 </div>
                 <div className="form-group">
@@ -48,7 +65,7 @@ export default function CreateProject() {
                 </div>
             </form>
             <button onClick={handleCreateProject}>
-                save
+                create
             </button>
         </div>
     )
