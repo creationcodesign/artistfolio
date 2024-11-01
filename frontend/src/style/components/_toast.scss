@@ -1,0 +1,20 @@
+.toast {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    color: var(--white);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+
+    &__close {
+        cursor: pointer;
+        transition: all 0.5s ease;
+    }
+
+    &__close:hover {
+        color: var(--black);
+    }
+}
