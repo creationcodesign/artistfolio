@@ -1,13 +1,20 @@
 import { Icon } from '@ailibs/feather-react-ts'
 import defaultImg from '../../../assets/images/default-img-small.png'
+import { Thumbnail } from '../../Thumbnail'
 
-
-export default function Project({ setProjectAction }: any) {
+export default function Project({ setProjectAction, project }: any) {
     return (
         <div className="project">
             <div className='project-content'>
-                <img src={defaultImg} alt="project image" />
-                <h3>Project Name</h3>
+                {project.thumbnail.startsWith('data:image/') && project.thumbnail.includes(';base64,') ?
+                    <Thumbnail thumbnail={project.thumbnail} />
+                    :
+                    <img src={project.thumbnail || defaultImg}
+                        alt={project.thumbnail ? 'Project Thumbnail' : 'Default Thumbnail'}
+                        width={300}
+                    />
+                }
+                <h3>{project.name}</h3>
             </div>
 
             <div className="project-actions">

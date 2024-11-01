@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Icon } from "@ailibs/feather-react-ts";
 import Project from "./Project";
 import CreateProject from "./CreateProject";
+import { useProjectStore } from "../../../store/project";
 
 
 export default function Projects() {
     const [projectAction, setProjectAction] = useState<string>('create')
+    const { getProjects, projects } = useProjectStore()
+
+    useEffect(() => {
+        getProjects();
+    }, [getProjects]);
 
     return (
         <div className="projects-section">
@@ -18,10 +24,13 @@ export default function Projects() {
             </div>
 
             <div className="projects">
-                <Project setProjectAction={setProjectAction} />
-                <Project setProjectAction={setProjectAction} />
+                {
+                    projects ? projects.map((project: any) => (
+                        <Project key={project._id} setProjectAction={setProjectAction} project={project} />
+                    ))
+                        : <p>No projects</p>
+                }
             </div>
-
 
             {projectAction === 'create' &&
                 <CreateProject />

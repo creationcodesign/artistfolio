@@ -1,13 +1,14 @@
 import { useState } from "react"
 import { useProjectStore } from "../../../store/project"
-import { Project } from "../../../interface/Project"
+import { IProject } from "../../../interface/IProject"
 import { useToast } from "../../../context/ToastContext";
 
 
 export default function CreateProject() {
     const { addToast } = useToast();
 
-    const [project, setProject] = useState<Project>({
+    const [project, setProject] = useState<IProject>({
+        _id: '',
         name: '',
         description: '',
         technologies: [''],
@@ -29,6 +30,7 @@ export default function CreateProject() {
         }
 
         setProject({
+            _id: '',
             name: '',
             description: '',
             technologies: [''],
