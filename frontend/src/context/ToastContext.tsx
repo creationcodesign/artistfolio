@@ -32,7 +32,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         // Automatically remove the toast after 5 seconds
         setTimeout(() => {
             removeToast(message);
-        }, 5000);
+        }, 50000);
     };
 
     const removeToast = (message: string) => {
@@ -53,17 +53,16 @@ const ToastContainer: React.FC<{ toasts: Toast[]; onRemove: (message: string) =>
             {toasts.map((toast, index) => (
                 <div
                     key={index}
+                    className='toast'
                     style={{
-                        margin: '10px',
-                        padding: '10px',
                         backgroundColor: getColor(toast.type),
-                        color: 'white',
-                        borderRadius: '5px',
-                        cursor: 'pointer',
                     }}
                 >
-                    {toast.message}
-                    <Icon name="x" onClick={() => onRemove(toast.message)} />
+                    <p>{toast.message}</p>
+                    <Icon name="x"
+                        className="toast__close"
+                        onClick={() => onRemove(toast.message)}
+                    />
                 </div>
             ))}
         </div>
@@ -73,12 +72,12 @@ const ToastContainer: React.FC<{ toasts: Toast[]; onRemove: (message: string) =>
 const getColor = (type: ToastType) => {
     switch (type) {
         case 'success':
-            return 'green';
+            return '#3EA45F';
         case 'error':
-            return 'red';
+            return '#f74f39';
         case 'info':
-            return 'blue';
+            return '#44B3EA';
         default:
-            return 'gray';
+            return '#aba9ad';
     }
 };
