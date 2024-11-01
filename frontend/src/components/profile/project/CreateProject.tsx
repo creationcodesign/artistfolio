@@ -1,28 +1,55 @@
+import { useState } from "react"
 
 
 export default function CreateProject() {
-    return (
-        <div className="project-action create-project">
-            <h3>Create Project</h3>
+    const [project, setProject] = useState({
+        name: '',
+        description: '',
+        technologies: '',
+        thumbnail: '',
+        link: '',
+    })
 
-            <form action="">
-                <label htmlFor="project-title">
-                    <span>project name</span>
-                    <input type="text" name="project-title" id="project-title" />
-                </label>
-                <label htmlFor="project-description">
-                    <span>project description</span>
-                    <input type="text" name="project-description" id="project-description" />
-                </label>
-                <label htmlFor="project-link">
-                    <span>project link</span>
-                    <input type="text" name="project-link" id="project-link" />
-                </label>
-                <label htmlFor="project-thumbnail">
-                    <span>project thumbnail</span>
-                    <input type="text" name="project-thumbnail" id="project-thumbnail" />
-                </label>
+
+    const handleCreateProject = async (e: any) => {
+        console.log(project)
+    }
+
+    return (
+        <div className="project-action-section create-project">
+            <h3 className="project-action__title">
+                Create Project
+            </h3>
+
+            <form action="" className="form-project-create" onSubmit={(e) => e.preventDefault()}>
+                <div className="form-group">
+                    <label htmlFor="project-title">
+                        <span>project name</span>
+                        <input type="text" name="name" id="project-title" onChange={(e) => setProject({ ...project, name: e.target.value })} />
+                    </label>
+                    <label htmlFor="project-description">
+                        <span>project description</span>
+                        <input type="text" name="description" id="project-description" onChange={(e) => setProject({ ...project, description: e.target.value })} />
+                    </label>
+                    <label htmlFor="project-technologies">
+                        <span>project technologies</span>
+                        <input type="text" name="technologies" id="project-technologies" onChange={(e) => setProject({ ...project, technologies: e.target.value })} />
+                    </label>
+                </div>
+                <div className="form-group">
+                    <label htmlFor="project-thumbnail">
+                        <span>project thumbnail</span>
+                        <input type="text" name="thumbnail" id="project-thumbnail" onChange={(e) => setProject({ ...project, thumbnail: e.target.value })} />
+                    </label>
+                    <label htmlFor="project-link">
+                        <span>project link</span>
+                        <input type="text" name="link" id="project-link" onChange={(e) => setProject({ ...project, link: e.target.value })} />
+                    </label>
+                </div>
             </form>
+            <button onClick={handleCreateProject}>
+                save
+            </button>
         </div>
     )
 }
