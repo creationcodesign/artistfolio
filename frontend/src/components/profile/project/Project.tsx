@@ -1,8 +1,13 @@
+import { useState } from 'react'
 import { Icon } from '@ailibs/feather-react-ts'
 import defaultImg from '../../../assets/images/default-img-small.png'
 import { Thumbnail } from '../../Thumbnail'
+import DeleteProject from './DeleteProject'
+
 
 export default function Project({ setProjectAction, project }: any) {
+    const [isActive, setIsActive] = useState(false)
+
     return (
         <div className="project">
             <div className='project-content'>
@@ -20,10 +25,19 @@ export default function Project({ setProjectAction, project }: any) {
             <div className="project-actions">
                 <Icon name="eye" onClick={() => setProjectAction('view')} />
                 <div className='project-actions__icons'>
-                    <Icon name="trash-2" onClick={() => setProjectAction('delete')} />
+                    <Icon name="trash-2" onClick={() => setIsActive(true)} />
                     <Icon name="edit-3" onClick={() => setProjectAction('edit')} />
                 </div>
             </div>
+
+
+            {isActive &&
+                <DeleteProject
+                    project={project}
+                    setIsActive={setIsActive}
+                />
+            }
+
         </div>
     )
 }
