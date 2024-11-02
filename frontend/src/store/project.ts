@@ -1,10 +1,13 @@
 import { create } from 'zustand'
-import { Project, ProjectStore } from '../interface/Project';
+import { IProject, ProjectStore } from '../interface/IProject';
 
 export const useProjectStore = create<ProjectStore>((set) => ({
     projects: [],
+    // set projects
     setProjects: (projects) => set({ projects }),
-    createProject: async (newProject: Project) => {
+
+    // create project
+    createProject: async (newProject: IProject) => {
         if (!newProject.name || !newProject.link || !newProject.thumbnail) {
             return {
                 success: false,
@@ -45,5 +48,111 @@ export const useProjectStore = create<ProjectStore>((set) => ({
                 message: data.message
             }
         }
+    },
+
+    // get all projects
+    getProjects: async () => {
+        const res = await fetch('/api/projects')
+        const data = await res.json()
+        if (data.success) {
+            set({ projects: data.data })
+            return {
+                success: true,
+                data: data.data
+            }
+        } else {
+            return {
+                success: false,
+                message: data.message
+            }
+        }
+    },
+
+    // get one project
+    getProject: async (id: string) => {
+        const res = await fetch(`/api/projects/${id}`)
+        const data = await res.json()
+        if (data.success) {
+            return {
+                success: true,
+                data: data.data
+            }
+        } else {
+            return {
+                success: false,
+                message: data.message
+            }
+        }
+    },
+
+    // update project
+    updateProject: async (id: string, updatedProject: IProject) => {
+        const res = await fetch(`/api/projects/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedProject)
+        })
+        const data = await res.json()
+        if (data.success) {
+            set((state: any) => ({
+                projects: state.projects.map((project: IProject) => {
+                    if (project._id === id) {
+                        return data.data
+                    }
+                    return project
+                })
+            }))
+            return {
+                success: true,
+                message: 'Project updated',
+                data: data.data
+            }
+        } else {
+            return {
+                success: false,
+                message: data.message
+            }
+        }
+    },
+
+    // delete project
+    deleteProject: async (id: string) => {
+        const res = await fetch(`/api/projects/${id}`, {
+            method: 'DELETE'
+        })
+
+        const data = await res.json()
+        if (!data.success) {
+            return {
+                success: false,
+                message: data.message
+            }
+        }
+
+        set((state: any) => ({
+            projects: state.projects.filter((project: IProject) => project._id !== id)
+        }))
+
+        return {
+            success: true,
+            message: 'Project deleted'
+        }
+
+        // if (data.success) {
+        //     set((state: any) => ({
+        //         projects: state.projects.filter((project: IProject) => project._id !== id)
+        //     }))
+        //     return {
+        //         success: true,
+        //         message: 'Project deleted'
+        //     }
+        // } else {
+        //     return {
+        //         success: false,
+        //         message: data.message
+        //     }
+        // }
     }
 }))
