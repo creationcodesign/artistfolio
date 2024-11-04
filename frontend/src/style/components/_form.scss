@@ -1,9 +1,9 @@
 form {
     display: flex;
-    flex-direction: column;
     gap: 1rem;
 
     label {
+        width: 16rem;
         display: flex;
         flex-direction: column;
         gap: 0.2rem;
@@ -14,8 +14,30 @@ form {
     select {
         padding: 0.6rem 0.6rem;
         background: none;
-        border: 1px solid var(--white);
+        border: 1px solid var(--gray-light);
         border-radius: 20px;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-right: 1.5rem;
+}
+
+.form-group:last-child {
+    margin-right: 0;
+}
+
+// AUTH FORM
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    button {
+        width: fit-content;
     }
 }
 
