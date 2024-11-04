@@ -88,7 +88,7 @@ export const useProjectStore = create<ProjectStore>((set) => ({
     // update project
     updateProject: async (id: string, updatedProject: IProject) => {
         const res = await fetch(`/api/projects/${id}`, {
-            method: 'PATCH',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
