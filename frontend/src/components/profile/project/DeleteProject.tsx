@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Icon } from "@ailibs/feather-react-ts";
 import { useToast } from "../../../context/ToastContext";
 import { useProjectStore } from "../../../store/project";
 
@@ -43,16 +44,23 @@ export default function DeleteProject({ project, setIsActive }: any) {
 
 
     return (
-        <div className="project-action delete-project">
-            <h3>Delete Project</h3>
-            <p>Are you sure you want to delete this project?</p>
-            <div className="project-action__buttons">
-                <button onClick={() => setConfirmDelete(true)} className="btn-action-delete">
-                    Yes
-                </button>
-                <button onClick={handleCancel} className="btn-action-cancel">
-                    No
-                </button>
+        <div className="project-action modal-container">
+            <div className="modal-content">
+                <div className="modal-header">
+                    <h3>Delete Project</h3>
+                    <Icon name="x" onClick={handleCancel} />
+                </div>
+                <div className="modal-body">
+                    <p>Are you sure you want to delete this project?</p>
+                    <div className="project-action__buttons">
+                        <button onClick={() => setConfirmDelete(true)} className="btn-action-delete">
+                            Yes
+                        </button>
+                        <button onClick={handleCancel} className="btn-action-cancel">
+                            No
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     )
