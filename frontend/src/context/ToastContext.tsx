@@ -32,7 +32,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         // Automatically remove the toast after 5 seconds
         setTimeout(() => {
             removeToast(message);
-        }, 50000);
+        }, 5000);
     };
 
     const removeToast = (message: string) => {
