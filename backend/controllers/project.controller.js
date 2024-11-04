@@ -34,6 +34,7 @@ export const createProject = async (req, res) => {
         await newProject.save();
         res.status(201).json({ success: true, message: 'Project created', data: newProject });
     } catch (error) {
+        console.log("POST ERROR:", error)
         res.status(500).json({ success: false, message: 'Internal server error while creating project.' });
     }
 };

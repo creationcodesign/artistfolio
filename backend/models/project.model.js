@@ -5,20 +5,21 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    link: {
+    description: {
         type: String,
-        required: true
+        required: false
     },
     thumbnail: {
         type: String,
         required: true
     },
-    description: {
+    link: {
         type: String,
-        required: false
+        required: true
     },
     technologies: {
-        type: String,
+        type: [String],
+        default: [],
         required: false
     }
 },
