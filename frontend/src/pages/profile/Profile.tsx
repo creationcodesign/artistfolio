@@ -1,22 +1,37 @@
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+// import ProfileLayout from "../../layout/ProfileLayout";
 import Sidebar from "../../components/profile/Sidebar";
-import About from "../About";
 import Projects from "../../components/profile/project/Projects";
+import UpdateAboutSection from "../../components/profile/UpdateAboutSection";
 
 export default function Profile() {
-    // const actions = ['dashboard', 'projects', 'about', 'settings', 'account'];
     const [selectedAction, setSelectedAction] = useState('dashboard');
+    const { logout } = useAuth();
+
+    const handleLogout = () => {
+        logout();
+    };
+
+    console.log("selectedAction:", selectedAction)
+
 
     return (
+        // <ProfileLayout>
         <div className='profile-page'>
             <h1>Profile</h1>
+
+            <button onClick={handleLogout}>
+                Logout
+            </button>
 
             <Sidebar
                 selectedAction={selectedAction}
                 setSelectedAction={setSelectedAction}
             />
 
-            {selectedAction === 'dashboard' && <About />
+            {
+                selectedAction === 'about' && <UpdateAboutSection />
                 ||
                 selectedAction === 'projects' && <Projects />
                 // ||
@@ -25,5 +40,6 @@ export default function Profile() {
                 // selectedAction === 'account' && <Account />
             }
         </div>
+        // </ProfileLayout>
     )
 }
