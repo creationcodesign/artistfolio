@@ -1,15 +1,20 @@
+import AboutMeSection from "../profile/about/AboutSection";
 
 export default function AboutMe() {
     return (
         <div className="about-section section about-grid" id="about">
-            <div className="about-me about-grid-item-1">
+            <AboutMeSection />
+            {/* 
+                <div className="about-me about-grid-item-1">
                 <h2 className="section-title">About Me</h2>
-                <p>Welcome to my creative world!</p>
+                 <p>Welcome to my creative world!</p>
                 <p>
                     I'm Nikita, an audio-visual artist dedicated to crafting immersive experiences that blend the power of music and visual storytelling.
                 </p>
-                <p>My journey began at the crossroads of sound and sight, where I discovered the unique magic that happens when these two art forms unite.</p>
-            </div>
+                <p>My journey began at the crossroads of sound and sight, where I discovered the unique magic that happens when these two art forms unite.</p> 
+                </div>
+                */}
+
             <div className="about-journey about-grid-item-2">
                 <h2 className="section-title">My Journey</h2>
                 <p>
