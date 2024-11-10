@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-// import ProfileLayout from "../../layout/ProfileLayout";
 import Sidebar from "../../components/profile/Sidebar";
 import Projects from "../../components/profile/project/Projects";
-import UpdateAboutSection from "../../components/profile/UpdateAboutSection";
+import UpdateAboutSection from "../../components/profile/about/UpdateAboutSection";
+import UpdateSkills from "../../components/profile/skills/UpdateSkills";
 
 export default function Profile() {
     const [selectedAction, setSelectedAction] = useState('dashboard');
@@ -13,33 +13,33 @@ export default function Profile() {
         logout();
     };
 
-    console.log("selectedAction:", selectedAction)
-
 
     return (
-        // <ProfileLayout>
         <div className='profile-page'>
-            <h1>Profile</h1>
+            <div className="profile-header">
+                <h1>Profile</h1>
+                <button onClick={handleLogout} className="btn-action">
+                    Logout
+                </button>
+            </div>
 
-            <button onClick={handleLogout}>
-                Logout
-            </button>
+            <div className="profile-section profile-content">
+                <Sidebar
+                    selectedAction={selectedAction}
+                    setSelectedAction={setSelectedAction}
+                />
 
-            <Sidebar
-                selectedAction={selectedAction}
-                setSelectedAction={setSelectedAction}
-            />
+                <div className="profile-actions">
+                    {
+                        selectedAction === 'projects' && <Projects />
+                        || selectedAction === 'about' && <UpdateAboutSection />
+                        || selectedAction === 'skills' && <UpdateSkills />
+                        // || selectedAction === 'account' && <Account />
+                    }
+                </div>
+            </div>
 
-            {
-                selectedAction === 'about' && <UpdateAboutSection />
-                ||
-                selectedAction === 'projects' && <Projects />
-                // ||
-                // selectedAction === 'settings' && <Settings />
-                // ||
-                // selectedAction === 'account' && <Account />
-            }
+
         </div>
-        // </ProfileLayout>
     )
 }
