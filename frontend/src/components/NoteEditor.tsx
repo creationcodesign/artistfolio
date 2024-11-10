@@ -21,16 +21,13 @@ function NoteEditor({ note, setNote }: any) {
     };
 
     return (
-        <div style={{ padding: '20px' }}>
-            <ReactQuill
-                value={note}
-                onChange={handleChange}
-                placeholder="Write your note here..."
-                theme="snow"
-                modules={modules}
-                style={{ height: '300px' }}
-            />
-        </div>
+        <ReactQuill
+            value={note}
+            onChange={handleChange}
+            placeholder="Write your note here..."
+            theme="snow"
+            modules={modules}
+        />
     );
 }
 
