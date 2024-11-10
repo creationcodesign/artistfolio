@@ -75,7 +75,7 @@ export default function UpdateSkills() {
 
     return (
         <div className='update-section'>
-            <h1>Update Skills</h1>
+            <h2>Update Skills</h2>
 
             {loading && <p>Updating...</p>}
 

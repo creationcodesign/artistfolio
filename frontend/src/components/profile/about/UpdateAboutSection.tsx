@@ -73,8 +73,8 @@ export default function UpdateAboutSection() {
     }
 
     return (
-        <div>
-            <h1>Update About Me</h1>
+        <div className='update-section'>
+            <h2>Update About Me</h2>
 
             {error && <p style={{ color: 'red' }}>{error}</p>}
             {loading && <p>Updating...</p>}
@@ -103,20 +103,22 @@ export default function UpdateAboutSection() {
                 </label>
             </form>
 
-            <label htmlFor="description">Description</label>
-            <NoteEditor
-                id="description"
-                note={aboutMe.description}
-                setNote={(value: string) => {
-                    setAboutMe((prevState) => ({
-                        ...prevState,
-                        description: value,
-                    }));
-                    setIsFormChanged(true);
-                }}
-            />
+            <label htmlFor="description">
+                Description
+                <NoteEditor
+                    id="description"
+                    note={aboutMe.description}
+                    setNote={(value: string) => {
+                        setAboutMe((prevState) => ({
+                            ...prevState,
+                            description: value,
+                        }));
+                        setIsFormChanged(true);
+                    }}
+                />
+            </label>
 
-            <button onClick={handleUpdate} disabled={loading || !isFormChanged}>
+            <button onClick={handleUpdate} disabled={loading || !isFormChanged} className='btn-save'>
                 {loading ? 'Updating...' : 'Update About Me'}
             </button>
         </div>
