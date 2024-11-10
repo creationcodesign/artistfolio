@@ -1,4 +1,13 @@
 .sidebar {
+    width: 8rem;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background-color: var(--bg-sidebar);
+    color: var(--black);
+    gap: 1rem;
+
     .sidebar-item {
         cursor: pointer;
         border-bottom: 2px solid transparent;
@@ -6,6 +15,7 @@
     }
 
     .active {
+        color: var(--accent);
         border-bottom: 2px solid var(--accent);
     }
 }

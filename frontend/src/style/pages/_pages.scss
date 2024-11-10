@@ -2,3 +2,25 @@
     padding: 2rem;
     color: var(--white);
 }
+
+.profile-page {
+    display: flex;
+    flex-direction: column;
+
+    .profile-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 1rem;
+        background-color: var(--primary);
+
+        button {
+            width: fit-content;
+        }
+    }
+
+    .profile-section {
+        display: flex;
+        // justify-content: space-between;
+    }
+}

@@ -14,8 +14,8 @@ button,
 }
 
 .btn-primary {
-    background-color: var(--accent);
-    background: linear-gradient(317deg, rgb(247, 176, 44) 0%, rgba(219, 127, 40, 1) 100%);
+    background-color: var(--primary);
+    // background: linear-gradient(317deg, rgb(247, 176, 44) 0%, rgba(219, 127, 40, 1) 100%);
     color: var(--black);
     border-radius: 18px;
     position: relative;
@@ -23,71 +23,73 @@ button,
     z-index: 1;
 }
 
-.btn-primary:after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    right: 0;
-    z-index: -1;
-    background-color: var(--white);
-    border-radius: 18px;
-    transition: all 0.5s ease;
-}
+// .btn-primary:after {
+//     position: absolute;
+//     content: "";
+//     width: 0;
+//     height: 100%;
+//     top: 0;
+//     right: 0;
+//     z-index: -1;
+//     background-color: var(--white);
+//     border-radius: 18px;
+//     transition: all 0.5s ease;
+// }
 
-.btn-primary:hover {
-    color: var(--accent);
-    background-color: var(--white);
-}
+// .btn-primary:hover {
+//     color: var(--accent);
+//     background-color: var(--white);
+// }
 
-.btn-primary:hover:after {
-    left: 0;
-    width: 100%;
-}
+// .btn-primary:hover:after {
+//     left: 0;
+//     width: 100%;
+// }
 
-.btn-primary:active {
-    top: 2px;
-}
+// .btn-primary:active {
+//     top: 2px;
+// }
 
 
 .btn-secondary {
     width: fit-content;
     background: none;
-    color: var(--blue-light-2) !important;
     position: relative;
     transition: all 0.5s ease;
     border-radius: 18px;
     z-index: 1;
-    border: 2px solid var(--blue-light-2);
 }
 
-.btn-secondary:after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    right: 0;
-    z-index: -1;
-    background-color: var(--blue-light-2);
-    border-radius: 18px;
-    transition: all 0.5s ease;
-}
+// .btn-secondary:after {
+//     position: absolute;
+//     content: "";
+//     width: 0;
+//     height: 100%;
+//     top: 0;
+//     right: 0;
+//     z-index: -1;
+//     background-color: var(--blue-light-2);
+//     border-radius: 18px;
+//     transition: all 0.5s ease;
+// }
 
-.btn-secondary:hover {
-    color: var(--white) !important;
-}
+// .btn-secondary:hover {
+//     color: var(--white) !important;
+// }
 
-.btn-secondary:hover:after {
-    left: 0;
-    width: 100%;
-}
+// .btn-secondary:hover:after {
+//     left: 0;
+//     width: 100%;
+// }
 
-.btn-secondary:active {
-    top: 2px;
-}
+// .btn-secondary:active {
+//     top: 2px;
+// }
 
+
+.btn-accent {
+    background-color: var(--accent);
+}
 
 .btn-action {
     display: flex;
@@ -103,6 +105,12 @@ button,
     &:hover {
         background-color: var(--primary);
     }
+}
+
+
+.btn-save {
+    color: var(--black);
+    background-color: var(--green);
 }
 
 
