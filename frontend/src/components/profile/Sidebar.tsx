@@ -3,7 +3,6 @@ export default function Sidebar({ selectedAction, setSelectedAction }: any) {
 
     return (
         <nav className='sidebar'>
-            <h2>Sidebar</h2>
             {actions.map((action) => (
                 <span
                     key={action}
