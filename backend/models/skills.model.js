@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const SkillsSectionSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true,
+        required: false,
     },
     text: {
         type: String,
@@ -17,5 +17,5 @@ const SkillsSectionSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-const AboutSection = mongoose.model("SkillsSection", SkillsSectionSchema);
-export default AboutSection;
+const SkillsSchema = mongoose.model("SkillsSection", SkillsSectionSchema);
+export default SkillsSchema;
