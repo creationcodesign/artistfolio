@@ -8,7 +8,7 @@ type LayoutProps = {
 
 export default function PortfolioLayout({ children }: LayoutProps) {
     return (
-        <div className="layout-portfolio app">
+        <div className="layout-portfolio app_">
             <Header />
             <main className="layout-portfolio-main">
                 {children}
