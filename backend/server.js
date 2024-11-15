@@ -6,6 +6,7 @@ import projectRoutes from './routes/project.route.js';
 import authRouter from './routes/auth.route.js';
 import aboutSectionRouter from './routes/about.route.js';
 import skillsSectionRouter from './routes/skills.route.js';
+import contactSectionRouter from './routes/contact.route.js';
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/projects', projectRoutes);
 app.use('/api/about', aboutSectionRouter);
 app.use('/api/skills', skillsSectionRouter);
+app.use('/api/contact', contactSectionRouter);
 
 
 // LISTEN
