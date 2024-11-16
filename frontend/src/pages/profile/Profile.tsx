@@ -4,6 +4,8 @@ import Sidebar from "../../components/profile/Sidebar";
 import Projects from "../../components/profile/project/Projects";
 import UpdateAboutSection from "../../components/profile/about/UpdateAboutSection";
 import UpdateSkills from "../../components/profile/skills/UpdateSkills";
+import UpdateContactSection from "../../components/profile/contact/UpdateContactSection";
+
 
 export default function Profile() {
     const [selectedAction, setSelectedAction] = useState('dashboard');
@@ -34,12 +36,10 @@ export default function Profile() {
                         selectedAction === 'projects' && <Projects />
                         || selectedAction === 'about' && <UpdateAboutSection />
                         || selectedAction === 'skills' && <UpdateSkills />
-                        // || selectedAction === 'account' && <Account />
+                        || selectedAction === 'contact' && <UpdateContactSection />
                     }
                 </div>
             </div>
-
-
         </div>
     )
 }
