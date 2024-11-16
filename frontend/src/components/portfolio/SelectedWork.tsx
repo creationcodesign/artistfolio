@@ -15,9 +15,11 @@ export default function SelectedWork() {
             <h2 className="section-title">Selected Work</h2>
             <div className="projects">
                 {
-                    projects ? projects.map((project: IProject) =>
-                        <SelectedWorkCard key={project._id} project={project} />
-                    )
+                    projects ? projects
+                        .sort((a, b) => a.position - b.position)
+                        .map((project: IProject) =>
+                            <SelectedWorkCard key={project._id} project={project} />
+                        )
                         : <p>No projects</p>
                 }
             </div>
