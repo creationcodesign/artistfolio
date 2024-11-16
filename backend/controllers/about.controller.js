@@ -3,7 +3,6 @@ import AboutMeSectionSchema from '../models/about.model.js';
 export const getAboutSection = async (req, res) => {
     try {
         const aboutMe = await AboutMeSectionSchema.findOne();
-        console.log("SERVER ABOUT", aboutMe);
         if (!aboutMe) {
             return res.status(404).json({ message: 'About Me section not found' });
         }
@@ -16,8 +15,6 @@ export const getAboutSection = async (req, res) => {
 
 export const createOrUpdateAboutSection = async (req, res) => {
     const { title, description, imageUrl } = req.body;
-    console.log("SERVER PUT ABOUT", req.body);
-
     try {
         if (!title || !description) {
             return res.status(400).json({ message: 'Title and description are required.' });
@@ -25,7 +22,6 @@ export const createOrUpdateAboutSection = async (req, res) => {
 
         // Check if the document already exists
         const existingAboutMe = await AboutMeSectionSchema.findOne();
-        console.log("ABOUT EXISTS", existingAboutMe);
 
         if (existingAboutMe) {
             // Update the existing document
