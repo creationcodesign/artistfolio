@@ -2,8 +2,8 @@ import AboutMe from "../components/portfolio/AboutMe";
 import PortfolioLayout from "../layout/PortfolioLayout";
 import Hero from "../components/portfolio/Hero";
 import SelectedWork from "../components/portfolio/SelectedWork";
-import Contact from "../components/portfolio/Contact";
 import SkillsSection from "../components/profile/skills/SkillsSection";
+import ContactSection from "../components/profile/contact/ContactSection";
 
 export default function Home() {
     return (
@@ -13,7 +13,7 @@ export default function Home() {
                 <SelectedWork />
                 <AboutMe />
                 <SkillsSection />
-                <Contact />
+                <ContactSection />
             </div>
         </PortfolioLayout>
     )
