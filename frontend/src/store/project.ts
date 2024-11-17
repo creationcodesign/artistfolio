@@ -1,5 +1,8 @@
 import { create } from 'zustand'
-import { IProject, ProjectStore } from '../interface/IProject';
+import { IProject, IProjectCreate, ProjectStore } from '../interface/IProject';
+
+
+const token = localStorage.getItem('token');
 
 export const useProjectStore = create<ProjectStore>((set) => ({
     projects: [],
@@ -7,7 +10,7 @@ export const useProjectStore = create<ProjectStore>((set) => ({
     setProjects: (projects) => set({ projects }),
 
     // create project
-    createProject: async (newProject: IProject) => {
+    createProject: async (newProject: IProjectCreate) => {
         if (!newProject.name || !newProject.link || !newProject.thumbnail) {
             return {
                 success: false,
@@ -18,6 +21,7 @@ export const useProjectStore = create<ProjectStore>((set) => ({
         const res = await fetch('/api/projects', {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(newProject)
@@ -116,6 +120,31 @@ export const useProjectStore = create<ProjectStore>((set) => ({
             }
         }
     },
+
+    // updateProjectsOrder   // use custom hook
+    updateProjectsOrder: async (projects: IProject[]) => {
+        const res = await fetch('/api/projects', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(projects)
+        })
+        const data = await res.json()
+        if (data.success) {
+            set({ projects: data.data })
+            return {
+                success: true,
+                message: 'Projects order updated'
+            }
+        } else {
+            return {
+                success: false,
+                message: data.message
+            }
+        }
+    },
+
 
     // delete project
     deleteProject: async (id: string) => {
