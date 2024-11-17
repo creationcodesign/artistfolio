@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useProjectStore } from "../../../store/project";
-import { IProject } from "../../../interface/IProject";
+import { IProjectUpdate } from "../../../interface/IProject";
 import { useToast } from "../../../context/ToastContext";
 import { Icon } from "@ailibs/feather-react-ts";
 
@@ -8,7 +8,7 @@ import { Icon } from "@ailibs/feather-react-ts";
 export default function EditProject({ project, setIsEditActive }: any) {
     const { addToast } = useToast();
 
-    const [updatedProject, setUpdatedProject] = useState<IProject>({
+    const [updatedProject, setUpdatedProject] = useState<IProjectUpdate>({
         _id: '',
         name: '',
         description: '',
@@ -17,14 +17,11 @@ export default function EditProject({ project, setIsEditActive }: any) {
         link: '',
     })
 
-    console.log("updatedProject:", updatedProject)
-    console.log("project ID:", project._id)
 
     const { updateProject } = useProjectStore()
 
     const handleUpdateProject = async () => {
         const { success, message } = await updateProject(project._id, project)
-        console.log("message:", message)
         const toastMessage = message || 'An unexpected error occurred.'
 
         if (success) {

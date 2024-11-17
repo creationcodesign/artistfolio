@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useProjectStore } from "../../../store/project"
-import { IProject } from "../../../interface/IProject"
+import { IProjectCreate } from "../../../interface/IProject"
 import { useToast } from "../../../context/ToastContext";
 import { Icon } from "@ailibs/feather-react-ts";
 
@@ -8,19 +8,17 @@ import { Icon } from "@ailibs/feather-react-ts";
 export default function CreateProject({ setIsAddActive }: any) {
     const { addToast } = useToast();
 
-    const [project, setProject] = useState<IProject>({
-        _id: '',
+    const [project, setProject] = useState<IProjectCreate>({
         name: '',
         description: '',
         technologies: [''],
         thumbnail: '',
-        link: '',
+        link: ''
     })
 
     const { createProject } = useProjectStore()
 
     const handleCreateProject = async () => {
-        console.log(project)
         const { success, message } = await createProject(project)
         const toastMessage = message || 'An unexpected error occurred';
 
@@ -32,12 +30,11 @@ export default function CreateProject({ setIsAddActive }: any) {
         }
 
         setProject({
-            _id: '',
             name: '',
             description: '',
             technologies: [''],
             thumbnail: '',
-            link: '',
+            link: ''
         })
     }
 
