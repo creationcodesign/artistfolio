@@ -9,7 +9,6 @@ export default function useAboutSection() {
     useEffect(() => {
         axios.get('/api/about')
             .then(response => {
-                console.log("response:", response.data);
                 setAboutData(response.data);
                 setLoading(false)
             })
