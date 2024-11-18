@@ -1,5 +1,5 @@
 import express from 'express';
-import { getProjects, getProject, createProject, updateProject, deleteProject } from '../controllers/project.controller.js';
+import { getProjects, getProject, createProject, updateProject, updateProjectsOrder, deleteProject } from '../controllers/project.controller.js';
 
 const projectRoutes = express.Router();
 
@@ -14,6 +14,9 @@ projectRoutes.post('/', createProject);
 
 // update
 projectRoutes.put('/:id', updateProject);
+
+// update projects order
+projectRoutes.put('/', updateProjectsOrder);
 
 // delete
 projectRoutes.delete('/:id', deleteProject);

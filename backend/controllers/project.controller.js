@@ -57,6 +57,24 @@ export const updateProject = async (req, res) => {
     }
 };
 
+
+// update projects order
+export const updateProjectsOrder = async (req, res) => {
+    const { projects } = req.body;
+    try {
+        // Update the position of each project in the database
+        for (let i = 0; i < projects.length; i++) {
+            const project = projects[i];
+            await Project.findByIdAndUpdate(project._id, { position: i + 1 });
+        }
+        res.status(200).json({ success: true, message: 'Project order updated successfully' });
+    } catch (error) {
+        console.error("Error updating project order:", error);
+        res.status(500).json({ success: false, message: 'Failed to update project order' });
+    }
+}
+
+
 // delete
 export const deleteProject = async (req, res) => {
     const { id } = req.params;

@@ -21,6 +21,10 @@ const projectSchema = new mongoose.Schema({
         type: [String],
         default: [],
         required: false
+    },
+    position: {
+        type: Number,
+        required: false
     }
 },
     {
