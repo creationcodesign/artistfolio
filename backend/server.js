@@ -7,6 +7,7 @@ import authRouter from './routes/auth.route.js';
 import aboutSectionRouter from './routes/about.route.js';
 import skillsSectionRouter from './routes/skills.route.js';
 import contactSectionRouter from './routes/contact.route.js';
+import heroSectionRouter from './routes/hero.route.js';
 
 dotenv.config();
 
@@ -19,6 +20,7 @@ app.use(express.json()); // allows us to accept JSON data in req.body (for parsi
 
 // ROUTES
 app.use('/api/auth', authRouter);
+app.use('/api/hero', heroSectionRouter);
 app.use('/api/projects', projectRoutes);
 app.use('/api/about', aboutSectionRouter);
 app.use('/api/skills', skillsSectionRouter);
