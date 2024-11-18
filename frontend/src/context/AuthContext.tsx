@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
+// Define the type for the AuthContext
 interface AuthContextType {
     isAuthenticated: boolean;
     isLoading: boolean;
@@ -13,10 +14,19 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
+    // Check if there's a token in localStorage when the app loads
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            // Optionally validate token here by calling an API to ensure it's still valid
+            setIsAuthenticated(true);
+        }
+        setIsLoading(false);
+    }, []);
+
     const login = (token: string) => {
         localStorage.setItem('token', token);
         setIsAuthenticated(true);
-        setIsLoading(false);
     };
 
     const logout = () => {
@@ -32,7 +42,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 };
 
 // Custom hook to access the authentication context
-export const useAuth = () => {
+export const useAuth = (): AuthContextType => {
     const context = useContext(AuthContext);
     if (!context) {
         throw new Error('useAuth must be used within an AuthProvider');
