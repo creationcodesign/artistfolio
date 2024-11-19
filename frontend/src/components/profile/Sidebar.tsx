@@ -1,5 +1,5 @@
 export default function Sidebar({ selectedAction, setSelectedAction }: any) {
-    const actions = ['dashboard', 'projects', 'about', 'skills', 'contact'];
+    const actions = ['dashboard', 'hero', 'projects', 'about', 'skills', 'contact'];
 
     return (
         <nav className='sidebar'>
