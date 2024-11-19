@@ -2,7 +2,7 @@ import { Icon } from "@ailibs/feather-react-ts";
 import useHeroSection from "../../../hooks/useHeroSection";
 import heroImg from '../../../assets/images/default-img-small.png';
 import { useState } from "react";
-// import VideoPlayer from "../../VideoPlayer";
+import VideoPreview from "../../VideoPreview";
 
 
 export default function HeroSection() {
@@ -12,23 +12,6 @@ export default function HeroSection() {
     if (!heroData || loading) {
         return <p>Loading...</p>;
     }
-
-    console.log("heroData:", heroData.link)
-
-    const closeVideo = () => setIsVideoActive(false);
-
-
-    // const getGoogleDriveDirectLink = (url: string) => {
-    //     const regex = /(?:drive|docs).google.com.*(?:id=|\/)([^\/?&]*)/i;
-    //     const match = url.match(regex);
-    //     return match ? `https://drive.google.com/uc?export=download&id=${match[1]}` : url;
-    // };
-
-    //     <video width="640" height="360" controls autoPlay>
-    //     <source src={getGoogleDriveDirectLink(heroData?.link || '')} type="video/mp4" />
-    //     Your browser does not support the video tag.
-    // </video>
-
 
     return (
         <div className='hero-section section' id="hero">
@@ -69,44 +52,12 @@ export default function HeroSection() {
                     <Icon name="play" className="play-icon" />
                 </div>
             </div>
-
-
-            {/* Video Overlay */}
-            {isVideoActive && (
-                // <video width="640" height="360" controls >
-                //     <source src={heroData?.link || ''} type="video/mp4" />
-                //     Your browser does not support the video tag.
-                // </video>
-
-
-                <div className="video-overlay">
-                    <div className="video-container">
-                        {/* Close Button */}
-                        <button className="close-video-btn" onClick={closeVideo}>X</button>
-
-                        {/* Check if video is from YouTube or direct URL */}
-                        {heroData?.link?.includes('youtube.com') ? (
-                            <iframe
-                                width="560"
-                                height="315"
-                                src={`https://www.youtube.com/embed/${heroData.link.split('v=')[1]}`}
-                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                                title="Demo Reel"
-                            ></iframe>
-                        ) : (
-                            <video width="640" height="360" controls autoPlay>
-                                <source src={heroData?.link || ''} type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                        )}
-                    </div>
-                </div>
-            )}
-
-            {/* {isVideoActive &&
-                <VideoPlayer videoSrc={heroData?.link} />
-                } */}
+            {/* Video */}
+            {isVideoActive &&
+                <VideoPreview
+                    setIsVideoActive={setIsVideoActive}
+                    heroData={heroData}
+                />}
         </div>
     )
 }
