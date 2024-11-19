@@ -1,0 +1,55 @@
+.hero-section {
+    position: relative;
+}
+
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.video-container {
+    position: relative;
+    width: 90%;
+    max-width: 880px;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    // background: #0b0b0c;
+}
+
+.close-video-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 1px 5px;
+    font-size: 20px;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    background-color: rgb(238, 75, 75);
+    cursor: pointer;
+}
+
+.close-video-btn:hover {
+    background-color: #c00;
+}
+
+video {
+    width: 100%;
+    max-height: 580px;
+    border-radius: 5px;
+}
+
+iframe {
+    width: 100%;
+    height: 380px;
+    border-radius: 5px;
+}
