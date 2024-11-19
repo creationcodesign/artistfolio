@@ -5,6 +5,7 @@ import Projects from "../../components/profile/project/Projects";
 import UpdateAboutSection from "../../components/profile/about/UpdateAboutSection";
 import UpdateSkills from "../../components/profile/skills/UpdateSkills";
 import UpdateContactSection from "../../components/profile/contact/UpdateContactSection";
+import UpdateHeroSection from "../../components/profile/hero/UpdateHeroSection";
 
 
 export default function Profile() {
@@ -34,6 +35,7 @@ export default function Profile() {
                 <div className="profile-actions">
                     {
                         selectedAction === 'projects' && <Projects />
+                        || selectedAction === 'hero' && <UpdateHeroSection />
                         || selectedAction === 'about' && <UpdateAboutSection />
                         || selectedAction === 'skills' && <UpdateSkills />
                         || selectedAction === 'contact' && <UpdateContactSection />
