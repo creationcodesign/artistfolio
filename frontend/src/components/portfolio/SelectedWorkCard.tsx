@@ -1,36 +1,34 @@
+import { Icon } from '@ailibs/feather-react-ts'
 import defaultImg from '../../assets/images/default-img-small.png'
-import { Thumbnail } from '../Thumbnail'
 
 export default function SelectedWorkCard({ project }: any) {
-
     return (
         <div className="project selected-work">
-            <div className='project-image'>
+            <div className='selected-work-content'>
                 {project.thumbnail.startsWith('data:image/') && project.thumbnail.includes(';base64,') ?
-                    <Thumbnail thumbnail={project.thumbnail} />
+                    <div className='project-image'
+                        style={{ backgroundImage: 'url(' + defaultImg + ')' }}
+                    ></div>
                     :
-                    <img src={project.thumbnail || defaultImg}
-                        alt={project.thumbnail ? 'Project Thumbnail' : 'Default Thumbnail'}
-                        width={300}
-                    />
+                    <div className='project-image'
+                        style={{ backgroundImage: `url(${project.thumbnail || 'url(' + defaultImg + ')'})` }}
+                    > </div>
                 }
-                {/* <img src={project.thumbnail || defaultImg}
-                    alt={project.thumbnail ? 'Project Thumbnail' : 'Default Thumbnail'}
-                    width={300}
-                /> */}
-            </div>
-
-            <div className='project-info'>
-                <h3>{project.name}</h3>
-                <p>{project.description}</p>
-                <div className="project-technology">
-                    {project.technologies.map((tech: string, index: number) => (
-                        <span key={index} className={`${tech !== '' ? 'tag' : ''}`}>
-                            {tech}
-                        </span>
-                    ))}
+                <div className='project-info'>
+                    <h3>{project.name}</h3>
+                    <p>{project.description}</p>
+                    <div className="project-technology">
+                        {project.technologies.map((tech: string, index: number) => (
+                            <span key={index} className={`${tech !== '' ? 'tag' : ''}`}>
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
                 </div>
             </div>
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className='project-link'>
+                <Icon name="arrow-right" size={28} />
+            </a>
         </div>
     )
 }
