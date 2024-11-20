@@ -15,40 +15,21 @@ button,
 
 .btn-primary {
     background-color: var(--primary);
-    // background: linear-gradient(317deg, rgb(247, 176, 44) 0%, rgba(219, 127, 40, 1) 100%);
     color: var(--black);
     border-radius: 18px;
-    position: relative;
-    transition: all 0.5s ease;
+    transition: all 1.5s ease;
     z-index: 1;
 }
 
-// .btn-primary:after {
-//     position: absolute;
-//     content: "";
-//     width: 0;
-//     height: 100%;
-//     top: 0;
-//     right: 0;
-//     z-index: -1;
-//     background-color: var(--white);
-//     border-radius: 18px;
-//     transition: all 0.5s ease;
-// }
+.btn-primary:after {
+    content: "";
+    // transition: all 01s ease;
+}
 
-// .btn-primary:hover {
-//     color: var(--accent);
-//     background-color: var(--white);
-// }
-
-// .btn-primary:hover:after {
-//     left: 0;
-//     width: 100%;
-// }
-
-// .btn-primary:active {
-//     top: 2px;
-// }
+.btn-primary:hover:after {
+    padding-left: 0.2rem;
+    content: "\2192";
+}
 
 
 .btn-secondary {
@@ -173,14 +154,79 @@ button,
     background-color: var(--gray-super-light);
     opacity: 0.8;
     border-radius: 50%;
-    cursor: pointer;
     position: fixed;
     right: 2rem;
     bottom: 1rem;
     z-index: 99;
+    cursor: pointer;
 
     .icon-to-top {
         color: var(--accent);
         opacity: 1;
+    }
+}
+
+.play-icon,
+.play-section {
+    transition: all 0.5s ease;
+    cursor: pointer;
+
+    &:hover {
+        color: var(--accent);
+    }
+}
+
+
+
+.project-link {
+    position: relative;
+}
+
+.arrow-link {
+    width: 3vmin;
+    height: 3vmin;
+    box-sizing: border-box;
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    transform: rotate(45deg);
+
+    &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        border-width: .8vmin .8vmin 0 0;
+        border-style: solid;
+        border-color: var(--primary);
+        transition: .2s ease;
+        display: block;
+        transform-origin: 100% 0;
+    }
+
+
+    &:after {
+        content: '';
+        float: left;
+        position: relative;
+        top: -100%;
+        width: 100%;
+        height: 100%;
+        border-width: 0 .8vmin 0 0;
+        border-style: solid;
+        border-color: var(--primary);
+        transform-origin: 100% 0;
+        transition: .2s ease;
+    }
+
+    &:hover::after {
+        transform: rotate(45deg);
+        border-color: var(--accent);
+        height: 120%;
+    }
+
+    &:hover::before {
+        border-color: var(--accent);
+        transform: scale(.8);
+
     }
 }
