@@ -28,6 +28,7 @@ export default function SelectedWorkCard({ project }: any) {
             </div>
             <a href={project.link} target="_blank" rel="noopener noreferrer" className='project-link'>
                 <Icon name="arrow-right" size={28} />
+                <div className="arrow-link"></div>
             </a>
         </div>
     )

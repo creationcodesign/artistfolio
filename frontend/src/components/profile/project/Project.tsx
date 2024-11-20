@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Icon } from '@ailibs/feather-react-ts'
 import defaultImg from '../../../assets/images/default-img-small.png'
-import { Thumbnail } from '../../Thumbnail'
 import DeleteProject from './DeleteProject'
 import EditProject from './EditProject'
 
@@ -14,17 +13,14 @@ export default function Project({ project }: any) {
         <div className="project">
             <div className='project-content'>
                 {project.thumbnail.startsWith('data:image/') && project.thumbnail.includes(';base64,') ?
-                    <Thumbnail thumbnail={project.thumbnail} />
+                    <div className='project-image'
+                        style={{ backgroundImage: 'url(' + defaultImg + ')' }}
+                    ></div>
                     :
-                    <img src={project.thumbnail || defaultImg}
-                        alt={project.thumbnail ? 'Project Thumbnail' : 'Default Thumbnail'}
-                        width={300}
-                    />
+                    <div className='project-image'
+                        style={{ backgroundImage: `url(${project.thumbnail || 'url(' + defaultImg + ')'})` }}
+                    > </div>
                 }
-                {/* <img src={project.thumbnail || defaultImg}
-                    alt={project.thumbnail ? 'Project Thumbnail' : 'Default Thumbnail'}
-                    width={300}
-                /> */}
                 <h3>{project.name}</h3>
             </div>
 
