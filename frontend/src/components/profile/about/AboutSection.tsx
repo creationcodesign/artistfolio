@@ -13,7 +13,7 @@ const AboutMeSection = () => {
             <div
                 dangerouslySetInnerHTML={{ __html: aboutData?.description }}
             />
-            {aboutData?.imageUrl && <img src={aboutData?.imageUrl} alt="About Me" />}
+            {/* {aboutData?.imageUrl && <img src={aboutData?.imageUrl} alt="About Me" />} */}
         </div>
     );
 };
