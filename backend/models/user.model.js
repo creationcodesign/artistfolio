@@ -29,6 +29,24 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-});
+    lastLogin: {
+        type: Date,
+        default: Date.now,
+    },
+    accountCreatedOn: {
+        type: Date,
+        default: Date.now,
+    },
+    browser: {
+        type: String,
+        required: false,
+    },
+    platform: {
+        type: String,
+        required: false,
+    },
+},
+    { timestamps: true }
+);
 
 export default mongoose.model('User', UserSchema);
