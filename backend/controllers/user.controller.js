@@ -4,6 +4,8 @@ import jwt from 'jsonwebtoken';
 
 // Register a new user
 export const register = async (req, res) => {
+    const browser = req.headers['user-agent'];
+    const platform = req.headers['sec-ch-ua-platform'];
     const { email, password } = req.body;
     if (!email || !password) {
         return res.status(400).json({ message: 'Email and password are required' });
@@ -14,7 +16,14 @@ export const register = async (req, res) => {
             return res.status(409).json({ message: 'User already exists' });
         }
         const hashedPassword = await bcrypt.hash(password, 10); // Hashing the password
-        const newUser = new User({ email, password: hashedPassword });
+        const newUser = new User({
+            email,
+            password: hashedPassword,
+            browser,
+            platform,
+            lastLogin: new Date(),
+            accountCreatedOn: new Date()
+        });
         await newUser.save();
         res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
@@ -26,6 +35,8 @@ export const register = async (req, res) => {
 
 // Login a user
 export const login = async (req, res) => {
+    const browser = req.headers['user-agent'];
+    const platform = req.headers['sec-ch-ua-platform'];
     const { email, password } = req.body;
     // Validate input
     if (!email || !password) {
@@ -35,6 +46,12 @@ export const login = async (req, res) => {
     try {
         // Find the user by email
         const user = await User.findOne({ email });
+
+        // Update lastLogin and other fields
+        user.lastLogin = user.lastLogin;
+        user.browser = browser;
+        platform && (user.platform = platform);
+        await user.save();
 
         // Check for user existence
         if (!user) {
@@ -61,7 +78,7 @@ export const login = async (req, res) => {
         res.cookie('token', token, cookieOptions);
 
         // Send response
-        res.status(200).json({ success: true, message: 'Logged in', token: token });
+        res.status(200).json({ success: true, message: 'Logged in', token: token, user: user });
     } catch (error) {
         console.error('Login error:', error); // Log error for debugging
         res.status(500).json({ message: 'Internal server error during login.' });
