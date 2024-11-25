@@ -24,3 +24,14 @@
         // justify-content: space-between;
     }
 }
+
+.dashboard {
+    padding: 1rem;
+
+    .last-login {
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 5px;
+        background-color: var(--white);
+    }
+}
