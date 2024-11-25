@@ -6,6 +6,7 @@ import UpdateAboutSection from "../../components/profile/about/UpdateAboutSectio
 import UpdateSkills from "../../components/profile/skills/UpdateSkills";
 import UpdateContactSection from "../../components/profile/contact/UpdateContactSection";
 import UpdateHeroSection from "../../components/profile/hero/UpdateHeroSection";
+import Dashboard from "../../components/profile/Dashboard";
 
 
 export default function Profile() {
@@ -15,7 +16,6 @@ export default function Profile() {
     const handleLogout = () => {
         logout();
     };
-
 
     return (
         <div className='profile-page'>
@@ -34,7 +34,8 @@ export default function Profile() {
 
                 <div className="profile-actions">
                     {
-                        selectedAction === 'projects' && <Projects />
+                        selectedAction === 'dashboard' && <Dashboard />
+                        || selectedAction === 'projects' && <Projects />
                         || selectedAction === 'hero' && <UpdateHeroSection />
                         || selectedAction === 'about' && <UpdateAboutSection />
                         || selectedAction === 'skills' && <UpdateSkills />
