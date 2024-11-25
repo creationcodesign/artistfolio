@@ -15,7 +15,6 @@ export default function Login({ setIsLoginAction }: LoginProps) {
     const { login } = useAuth();
     const navigate = useNavigate();
 
-
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true); // Start loading state
@@ -27,6 +26,9 @@ export default function Login({ setIsLoginAction }: LoginProps) {
                     'Content-Type': 'application/json'
                 }
             });
+            // console.log("LOGIN RESPONSE:", response);
+            const user = response.data.user;
+            localStorage.setItem('user', JSON.stringify(user));
             const token = response.data.token;
             login(token);
             navigate('/auth/profile', { replace: true });
