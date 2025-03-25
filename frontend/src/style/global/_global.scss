@@ -1,15 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;500;600;700&display=swap');
 
-
-// @font-face {
-//     font-family: 'YesevaOne-Regular';
-//     src: local('YesevaOne-Regular'), url(../../../public/assets/font/YesevaOne-Regular.ttf) format('ttf'),
-//         url(../../../public/assets/font/rossanova/Rossanova-Regular.otf) format("oft"),
-//         url(../../../public/assets/font/Yeseva_One/YesevaOne-Regular.ttf) format("ttf"),
-//         url(../../../public/assets/font/ABeeZee/ABeeZee-Regular.ttf) format("ttf"),
-//         url(../../../public/assets/font/Exo_2/Exo2-VariableFont_wght.ttf) format("ttf")
-// }
-
 :root {
     --max-width: 1100px;
     --border-radius: 12px;
@@ -19,8 +9,6 @@
     font-family: "ABeeZee", sans-serif;
 
     // COLORS
-    // --primary: #e25cfa;
-    // --secondary: #9A44EA;
     --primary: #D6ACFF;
     --secondary: #ACDCFF;
     --accent: #44B3EA;
@@ -38,12 +26,9 @@
     --green: #6de092;
     --red: #fa7b6a;
     --orange: #f9b63a;
-
     --tag: #CCDBF1;
-
     --bg-light-color: #e2eeff;
     --bg-dark-color: #20252d;
-
     --bg-sidebar: #d0ddf0;
 }
 

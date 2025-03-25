@@ -107,13 +107,47 @@
 // RESPONSIVE DESIGN
 @media screen and (max-width: 800px) {
     .home-page {
+
         .hero-section {
             height: auto;
+            flex-direction: column;
+
+
+            .hero-image {
+                width: 100%;
+                height: auto;
+                margin-top: 2rem;
+            }
 
             img {
-                width: 60%;
-                height: 75%;
+                width: 100%;
+                height: auto;
             }
+        }
+
+        .about-section {
+            display: flex;
+            flex-direction: column;
+
+            .about-me {
+                margin-right: 0rem;
+            }
+        }
+
+        .skills-content {
+            width: auto !important;
+        }
+
+        .tools {
+            gap: 0.5rem !important;
+
+            .tag {
+                margin: 0.2rem 0;
+            }
+        }
+
+        .contact-section {
+            width: auto !important;
         }
     }
 }

@@ -15,8 +15,6 @@
     grid-template-columns: 1fr;
     grid-template-rows: 3rem 1fr;
 
-    border: 2px solid green;
-
     .layout-profile-content {
         min-height: 90vh;
         display: grid;
@@ -28,16 +26,9 @@
     }
 
     .layout-profile-main {
-        // min-height: 90vh;
         overflow-x: hidden;
         overflow-y: scroll;
     }
-
-    // main {
-    //     display: flex;
-    //     flex-direction: column;
-    //     flex: 1;
-    // }
 }
 
 .layout-portfolio {
@@ -47,4 +38,10 @@
     padding: 0.5rem 2rem;
     display: flex;
     flex-direction: column;
+}
+
+@media screen and (max-width: 800px) {
+    .layout-portfolio {
+        padding: 0.5rem 1rem;
+    }
 }

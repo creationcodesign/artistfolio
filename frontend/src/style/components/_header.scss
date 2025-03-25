@@ -11,6 +11,40 @@ header {
     align-self: flex-start;
 }
 
-.menu-icon {
+.mobile-icons {
     display: none;
+
+    svg {
+        cursor: pointer;
+    }
+}
+
+.header-navbar-container {
+    display: flex;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+    header {
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    nav {
+        flex-direction: column;
+        align-self: center !important;
+        gap: 1rem !important;
+    }
+
+    .mobile-icons {
+        display: block;
+    }
+
+    .header-navbar-container {
+        display: none;
+    }
+
+    .header-navbar-container.active {
+        display: block;
+    }
 }

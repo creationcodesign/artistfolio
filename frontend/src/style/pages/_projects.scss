@@ -177,7 +177,6 @@
         .project-info {
             display: flex;
             flex-direction: column;
-            // gap: 0.5rem;
             padding: 0.8rem 1rem 0.35rem 0.6rem;
 
             p {
@@ -191,4 +190,12 @@
             gap: 0.5rem;
         }
     }
+}
+
+@media screen and (max-width: 800px) {
+    .projects-section {
+        width: auto !important;
+        gap: 2rem;
+    }
+
 }
